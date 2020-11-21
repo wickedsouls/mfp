@@ -1,0 +1,24 @@
+name: deploy-container-3
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages/container/**'
+
+defaults:
+  run:
+    working-directory: packages/container
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - run: |
+          npm install
+          npm run build
